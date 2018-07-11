@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.usst.mapper.ApplicationMapper">
+    <select id="SelectByStatus"  resultType="com.usst.pojo.Application">
+        select * from application where status=#{0}
+    </select>
+    <update id="UpdateNurse" >
+        update application set n_id=#{0} ,n_name=#{1},n_id1=#{2},n_name1=#{3} where id=#{4}
+    </update>
+    <update id="UpdateNurse1" >
+        update application set n_id=#{0} ,n_name=#{1}where id=#{2}
+    </update>
+    <update id="UpdateStatus">
+        update application set status=3 where id =#{0}
+    </update>
+    <update id="UpdateStatus1">
+        update application set status=2 where id =#{0}
+    </update>
+    <select id="SelectDay" resultType="com.usst.pojo.Application">
+        select * from application where time like '2018-07-09-%%' and status=3
+    </select>
+    <select id="SelectMonth" resultType="com.usst.pojo.Application">
+        select * from application where time like '2018-07-%%-%%' and status=3
+    </select>
+    <select id="SelectRoom" resultType="java.lang.String">
+        select roomnumber from application
+    </select>
+    <select id="SelectById" resultType="com.usst.pojo.Application">
+        select * from application where d_id=#{0} and status=1
+    </select>
+    <select id="SelectById2" resultType="com.usst.pojo.Application">
+        select * from application where d_id=#{0} and (status=2 or status=3)
+    </select>
+    <insert id="InsertAll">
+      insert into application (p_id,p_name,p_section,d_id,d_name,d_section,time,name,roomnumber,status) values(#{0},#{1},#{2},#{3},#{4},#{5},#{6},#{7},#{8},1)
+    </insert>
+</mapper>

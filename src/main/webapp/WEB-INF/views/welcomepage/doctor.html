@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 可选的Bootstrap主题文件（一般不使用） -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(
+            function()
+            {
+                $("#bt1").click(
+                    function () {
+                    $.post(
+                        "http://localhost:8080/demo/result",
+                        {
+                            status:1
+                        },
+                        function (data) {
+                            var data1=JSON.parse(data);//将string类型转换成json类型
+                            $('#biao').html("");
+                            for(i=0;i<data1.length;i++){
+                                var p_name=data1[i].p_name;
+                                var p_section=data1[i].p_section;
+                                var d_name=data1[i].d_name;
+                                var d_section=data1[i].d_section;
+                                var time=data1[i].time;
+                                var name=data1[i].name;
+                                var room=data1[i].roomnumber;
+                                var str="<tr><td>"+p_name+"</td><td>"+p_section+"</td><td>"+d_name+"</td><td>"+d_section+"</td><td>"+time+"</td><td>"+name+"</td><td>"+room+"</td><td>申请未接受</td><tr>";
+                                $('#biao').append(str);
+
+
+                            }
+
+                        }
+                    ).error(function (msg) {
+                        alert("无任务状态");
+                    })
+                    }
+                );
+
+            }
+        );
+    </script>
+    <script>
+        $(
+            function()
+            {
+                $("#bt2").click(
+                    function () {
+                        $.post(
+                            "http://localhost:8080/demo/result",
+                            {
+                                status:2
+                            },
+                            function (data) {
+                                var data1=JSON.parse(data);//将string类型转换成json类型
+                                $('#biao').html("");
+                                for(i=0;i<data1.length;i++){
+                                    var id=data1[i].id;
+                                    var p_name=data1[i].p_name;
+                                    var p_section=data1[i].p_section;
+                                    var d_name=data1[i].d_name;
+                                    var d_section=data1[i].d_section;
+                                    var time=data1[i].time;
+                                    var name=data1[i].name;
+                                    var room=data1[i].roomnumber;
+                                    var str="<tr><td>"+p_name+"</td><td>"+p_section+"</td><td>"+d_name+"</td><td>"+d_section+"</td><td>"+time+"</td><td>"+name+"</td><td>"+room+"</td><td>申请已接受未安排</td><td><button class='btn-success' onclick=\"javascript:window.open('../manage/nurse?patient="+p_name+"&name="+name+"&id="+id+"');\">安排</button><td></td><tr>";
+                                    $('#biao').append(str);
+
+
+                                }
+
+                            }
+                        ).error(function (msg) {
+                            alert("无任务状态");
+                        })
+                    }
+                );
+
+            }
+        );
+    </script>
+    <script>
+        $(
+            function()
+            {
+                $("#bt3").click(
+                    function () {
+                        $.post(
+                            "http://localhost:8080/demo/result",
+                            {
+                                status:3
+                            },
+                            function (data) {
+                                var data1=JSON.parse(data);//将string类型转换成json类型
+                                $('#biao').html("");
+                                for(i=0;i<data1.length;i++){
+                                    var p_name=data1[i].p_name;
+                                    var p_section=data1[i].p_section;
+                                    var d_name=data1[i].d_name;
+                                    var d_section=data1[i].d_section;
+                                    var time=data1[i].time;
+                                    var name=data1[i].name;
+                                    var room=data1[i].roomnumber;
+                                    var str="<tr><td>"+p_name+"</td><td>"+p_section+"</td><td>"+d_name+"</td><td>"+d_section+"</td><td>"+time+"</td><td>"+name+"</td><td>"+room+"</td><td>申请已接受已安排</td><td><td></td><tr>";
+                                    $('#biao').append(str);
+
+
+                                }
+
+                            }
+                        ).error(function (msg) {
+                            alert("无任务状态");
+                        })
+                    }
+                );
+
+            }
+        );
+    </script>
+
+    <script>
+        $(
+            function()
+            {
+                $("#bt4").click(
+                    function () {
+                        $.post(
+                            "http://localhost:8080/demo/result",
+                            {
+                                status:4
+                            },
+                            function (data) {
+                                var data1=JSON.parse(data);//将string类型转换成json类型
+                                $('#biao').html("");
+                                for(i=0;i<data1.length;i++){
+                                    var p_name=data1[i].p_name;
+                                    var p_section=data1[i].p_section;
+                                    var d_name=data1[i].d_name;
+                                    var d_section=data1[i].d_section;
+                                    var time=data1[i].time;
+                                    var name=data1[i].name;
+                                    var room=data1[i].roomnumber;
+                                    var str="<tr><td>"+p_name+"</td><td>"+p_section+"</td><td>"+d_name+"</td><td>"+d_section+"</td><td>"+time+"</td><td>"+name+"</td><td>"+room+"</td><td>申请已接受已安排</td><td><td></td><tr>";
+                                    $('#biao').append(str);
+
+
+                                }
+
+                            }
+                        ).error(function (msg) {
+                            alert("无任务状态");
+                        })
+                    }
+                );
+
+            }
+        );
+    </script>
+    <script>
+        $(
+            function()
+            {
+                $("#bt5").click(
+                    function () {
+                        $.post(
+                            "http://localhost:8080/demo/result",
+                            {
+                                status:5
+                            },
+                            function (data) {
+                                var data1=JSON.parse(data);//将string类型转换成json类型
+                                $('#biao').html("");
+                                for(i=0;i<data1.length;i++){
+                                    var p_name=data1[i].p_name;
+                                    var p_section=data1[i].p_section;
+                                    var d_name=data1[i].d_name;
+                                    var d_section=data1[i].d_section;
+                                    var time=data1[i].time;
+                                    var name=data1[i].name;
+                                    var room=data1[i].roomnumber;
+                                    var str="<tr><td>"+p_name+"</td><td>"+p_section+"</td><td>"+d_name+"</td><td>"+d_section+"</td><td>"+time+"</td><td>"+name+"</td><td>"+room+"</td><td>申请已接受已安排</td><td><td></td><tr>";
+                                    $('#biao').append(str);
+
+
+                                }
+
+                            }
+                        ).error(function (msg) {
+                            alert("无任务状态");
+                        })
+                    }
+                );
+
+            }
+        );
+    </script>
+    <script>
+        $(
+            function () {
+                $("#visual").click(
+                    function () {
+                        $.post(
+                            "http://localhost:8080/manage/vision",
+                            {
+
+                            },
+                            function (data) {
+                                    var data1=JSON.parse(data);
+                                    var length=data1.length;
+                                    var i;
+                                    var str=data1[0];
+                                    for(i=1;i<length;i++)
+                                    {
+                                        str=str+","+data1[i];
+                                    }
+                                    window.open("../manage/room?room="+str+"&number="+length+"")
+                            }
+                        ).error(
+                            function (msg) {
+                                alert(msg)
+                            }
+                        )
+                    }
+                )
+            }
+        )
+    </script>
+</head>
+<body background="../../../bootstrap/img/index.jpg" style="background-repeat:no-repeat ;background-size:100% 100%;">
+<img src="../../../bootstrap/img/changjiang.jpg" style="height: 140px;width: 140px;float: left">
+<p style="text-align: center;font-size: 40px;font-weight: bold">长江医院排班系统</p><br/>
+<div class="btn-group" style="margin-left: 500px">
+    <button type="button" class="btn btn-default" id="bt1">未接受预约</button>
+    <button type="button" class="btn btn-default" id="bt2">已接受预约</button>
+    <button type="button" class="btn btn-default" id="bt3">已安排预约</button>
+</div>
+<div class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">手术日程安排
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><a type="button" id="bt4">本月手术安排</a></li>
+        <li><a type="button" id="bt5">当天手术安排</a></li>
+        <!--<li><a href="#">手术间使用情况</a></li>-->
+        <li class="divider"></li>
+        <li><a type="button" id="visual">手术间可视化界面</a></li>
+    </ul>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>患者姓名</th>
+        <th>患者收治院系</th>
+        <th>医生姓名</th>
+        <th>医生所属院系</th>
+        <th>预约时间</th>
+        <th>手术名称</th>
+        <th>手术室</th>
+        <th>预约状态</th>
+    </tr>
+    </thead>
+    <tbody id="biao">
+
+    </tbody>
+</table>
+
+
+</body>
+</html>

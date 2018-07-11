@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 可选的Bootstrap主题文件（一般不使用） -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(
+            function()
+            {
+                $("#bt1").click(
+                    function () {
+                        $.post(
+                            "http://localhost:8080/doctor/status1",
+                            {
+
+                            },
+                            function (data) {
+                                var data1=JSON.parse(data);//将string类型转换成json类型
+                                $('#biao').html("");
+                                for(i=0;i<data1.length;i++){
+                                    var p_name=data1[i].p_name;
+                                    var p_section=data1[i].p_section;
+                                    var d_name=data1[i].d_name;
+                                    var d_section=data1[i].d_section;
+                                    var time=data1[i].time;
+                                    var name=data1[i].name;
+                                    var room=data1[i].roomnumber;
+                                    var str="<tr><td>"+p_name+"</td><td>"+p_section+"</td><td>"+d_name+"</td><td>"+d_section+"</td><td>"+time+"</td><td>"+name+"</td><td>"+room+"</td><td><input type=\"checkbox\" name=\"ckb\" value=\""+i+"\" />选择</td><tr>";
+                                    $('#biao').append(str);
+
+
+                                }
+                                var str1="<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><button class='btn-danger' id='btn'>选择</button></td><tr>";
+                                $('#biao').append(str1);
+                            }
+                        ).error(function (msg) {
+                            alert("无任务状态");
+                        })
+                    }
+                );
+
+            }
+        );
+    </script>
+    <script>
+        $(
+            function()
+            {
+
+                $("#bt2").click(
+                    function () {
+                        $.post(
+                            "http://localhost:8080/doctor/status2",
+                            {
+
+                            },
+                            function (data) {
+                                var data1=JSON.parse(data);//将string类型转换成json类型
+                                $('#biao').html("");
+                                for(i=0;i<data1.length;i++){
+                                    var id=data1[i].id;
+                                    var p_name=data1[i].p_name;
+                                    var p_section=data1[i].p_section;
+                                    var d_name=data1[i].d_name;
+                                    var d_section=data1[i].d_section;
+                                    var time=data1[i].time;
+                                    var name=data1[i].name;
+                                    var room=data1[i].roomnumber;
+                                    var str="<tr><td>"+p_name+"</td><td>"+p_section+"</td><td>"+d_name+"</td><td>"+d_section+"</td><td>"+time+"</td><td>"+name+"</td><td>"+room+"</td><td>申请已接受未安排</td><td>在系统分配麻醉师后即将进行手术<td></td><tr>";
+                                    $('#biao').append(str);
+
+
+                                }
+
+                            }
+                        ).error(function (msg) {
+                            alert("无任务状态");
+                        })
+                    }
+                );
+
+            }
+        );
+    </script>
+    <script>
+        $(
+            function () {
+                $("#biao").delegate("button", "click",       function () {
+                    var s=document.getElementsByName("ckb");
+                    var s1="";
+                    var j=0;
+                    for(var i=0;i<s.length;i++)
+                    {
+                        if(s[i].checked)
+                        {
+                            s1+=s[i].value+",";
+                            j=j+1;
+                        }
+                    }
+                    alert("已通过如上手术预约");
+                    location.href="http://localhost:8080/doctor/do?s1="+s1+"";
+
+
+                } );
+
+            }
+        )
+    </script>
+</head>
+<body background="../../../bootstrap/img/index.jpg" style="background-repeat:no-repeat ;background-size:100% 100%;">
+<p style="text-align: center;font-size: 40px;font-weight: bold">医生预约审核系统</p>
+<div class="btn-group" style="margin-left: 630px">
+    <button type="button" class="btn btn-default" id="bt1">我的手术预约</button>
+    <button type="button" class="btn btn-default" id="bt2">我的手术通知</button>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>患者姓名</th>
+        <th>患者收治院系</th>
+        <th>医生姓名</th>
+        <th>医生所属院系</th>
+        <th>预约时间</th>
+        <th>手术名称</th>
+        <th>手术室</th>
+        <th>预约状态</th>
+    </tr>
+    </thead>
+    <tbody id="biao">
+
+    </tbody>
+</table>
+</body>
+</html>

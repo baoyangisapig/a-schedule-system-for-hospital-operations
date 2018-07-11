@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+
+
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 可选的Bootstrap主题文件（一般不使用） -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(
+            function () {
+                $("#btn1").click(
+                    function () {
+                        alert("提交成功")
+                    }
+                )
+            }
+        )
+    </script>
+</head>
+<body background="../../../bootstrap/img/timg4.jpg" style="background-repeat:no-repeat ;background-size:100% 100%;">
+
+<img src="../../../bootstrap/img/changjiang.jpg" style="height: 140px;width: 140px;float: left">
+<p style="margin-left: 600px;font-size: 40px;font-weight: bold">患者手术申请系统</p>
+<form class="form-horizontal"  style="margin-left: 650px" action="../../patient/operation">
+    <fieldset>
+
+        <div class="control-group">
+            <label class="control-label" for="input01" style="text-align: center" >手术名称</label>
+            <div class="controls">
+                <input type="text" class="input-xlarge" id="input01" style="width: 200px;height: 30px" name="op_name">
+                <p class="help-block">具体名称请询问医师</p>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="input01" style="text-align: center" >手术室选择</label>
+            <div class="controls">
+                <input type="text" class="input-xlarge" id="input02" style="width: 200px;height: 30px" name="roomnumber">
+
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="input01" style="text-align: center" >手术时间选择</label>
+            <div class="controls">
+                <input type="text" class="input-xlarge" id="input03" style="width: 200px;height: 30px" name="time">
+
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="select01" style="text-align: center">医生选择列表</label>
+            <div class="controls">
+                <select id="select01" style="height: 30px;width: 200px;" name="op_people" >
+                    <option>李时珍</option>
+                    <option>周小平</option>
+                    <option>胡万</option>
+                    <option>周晓会</option>
+                    <option>陈岚</option>
+                    <option>赵无极</option>
+                    <option>陈坤</option>
+                    <option>张三丰</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="textarea" style="text-align: center">个人情况说明（选填）</label>
+            <div class="controls">
+                <textarea class="input-xlarge" id="textarea" rows="3" style="width: 200px;"></textarea>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="btn1">确认提交</button>
+            <button class="btn" type="reset">取消</button>
+        </div>
+    </fieldset>
+</form>
+<p>关于我们@</p>
+<p style="text-align: center;font-size: 15px">上海长江医院地址：上海市杨浦区军工路516号</p>
+<p style="text-align: center;font-size: 15px">邮编：215500</p>
+
+</body>
+</html>

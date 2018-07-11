@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.usst.mapper.CountMapper">
+ <select id="SelectBy" resultType="com.usst.pojo.Count">
+     select * from count where username=#{0} and password=#{1}
+ </select>
+    <insert id="InsertAll" >
+        insert into count (p_id,status,username,password) values (#{0},#{1},#{2},#{3})
+    </insert>
+</mapper>
